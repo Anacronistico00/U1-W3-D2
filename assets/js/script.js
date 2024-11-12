@@ -128,7 +128,6 @@ const generateTable = function () {
 
   const newTable = document.createElement('table');
   newTable.setAttribute('border', '1px', 'solid', 'black');
-  newTable.style.width = '100%';
   const tHead = document.createElement('thead');
   const headTr = document.createElement('tr');
   const tBody = document.createElement('tbody');
@@ -146,16 +145,22 @@ const generateTable = function () {
   for (let i = 0; i < 5; i++) {
     const bodyTr = document.createElement('tr');
     const bodyTd1 = document.createElement('td');
+    const img = document.createElement('img');
     const bodyTd2 = document.createElement('td');
     const bodyTd3 = document.createElement('td');
     const bodyTd4 = document.createElement('td');
 
-    bodyTd1.innerText = 'Immagine del prodotto';
+    img.src =
+      'https://media.istockphoto.com/id/1222357475/it/vettoriale/icona-di-anteprima-dellimmagine-segnaposto-immagine-per-la-progettazione-di-siti-web-o.jpg?s=612x612&w=0&k=20&c=Fq_GEHrjqNWyG1N_JQbA1WtVGeeE5UCvgpwNv_u_MPk=';
+    img.alt = 'Product image';
+    img.style.width = '50%';
+    bodyTd1.style.width = '20%';
     bodyTd2.innerText = 'nome del prodotto';
     bodyTd3.innerText = 'quantità del prodotto';
     bodyTd4.innerText = 'prezzo del prodotto';
 
     bodyTr.appendChild(bodyTd1);
+    bodyTd1.appendChild(img);
     bodyTr.appendChild(bodyTd2);
     bodyTr.appendChild(bodyTd3);
     bodyTr.appendChild(bodyTd4);
