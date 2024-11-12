@@ -61,7 +61,7 @@ addToTheSecond();
      */
 
 const addParagraph = function () {
-  const div1 = document.querySelector('div');
+  const div1 = document.querySelectorAll('div')[0];
   const newP = document.createElement('p');
   newP.innerText = 'Ecco il nuovo p generato da JS';
   div1.appendChild(newP);
@@ -75,7 +75,7 @@ addParagraph();
 
 const hideFirstUl = function () {
   const list1 = document.getElementById('firstList');
-  list1.innerText = '';
+  list1.style.display = 'none';
 };
 hideFirstUl();
 
@@ -122,15 +122,47 @@ revealFooterLink();
         Crea una funzione che crei una tabella nell'elemento con id "tableArea". 
         La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
      */
+const shoppingCart = [
+  {
+    image: 'https://m.media-amazon.com/images/I/81ymStt-9cL._AC_SX522_.jpg',
+    name: 'MSI MAG B650 TOMAHAWK WIFI',
+    quantity: 1,
+    price: 199.98,
+  },
+  {
+    image: 'https://m.media-amazon.com/images/I/71KltQ5kWsL._AC_SX679_.jpg',
+    name: 'Phanteks XT Pro Ultra',
+    quantity: 1,
+    price: 79.99,
+  },
+  {
+    image: 'https://m.media-amazon.com/images/I/71VQrQXksJL._AC_SX522_.jpg',
+    name: 'ZOTAC RTX 4070 Super 12GB',
+    quantity: 1,
+    price: 599.87,
+  },
+  {
+    image: 'https://m.media-amazon.com/images/I/51HqC0rU9HL._AC_SX679_.jpg',
+    name: 'AMD Ryzen 7 7800X3D',
+    quantity: 1,
+    price: 520.04,
+  },
+  {
+    image: 'https://m.media-amazon.com/images/I/612ptcpN5cL._SX522_.jpg',
+    name: 'Thermalright AQUA ELITE 360 V3',
+    quantity: 1,
+    price: 79.93,
+  },
+];
+const tBody = document.createElement('tbody');
+const newTable = document.createElement('table');
+newTable.setAttribute('border', '1px', 'solid', 'black');
 
 const generateTable = function () {
   const table = document.getElementById('tableArea');
 
-  const newTable = document.createElement('table');
-  newTable.setAttribute('border', '1px', 'solid', 'black');
   const tHead = document.createElement('thead');
   const headTr = document.createElement('tr');
-  const tBody = document.createElement('tbody');
 
   const thHeaders = ['immagine', 'Nome prodotto', 'Quantità', 'Prezzo'];
   thHeaders.forEach((element) => {
@@ -144,26 +176,25 @@ const generateTable = function () {
 
   for (let i = 0; i < 5; i++) {
     const bodyTr = document.createElement('tr');
-    const bodyTd1 = document.createElement('td');
+    const Td1 = document.createElement('td');
     const img = document.createElement('img');
-    const bodyTd2 = document.createElement('td');
-    const bodyTd3 = document.createElement('td');
-    const bodyTd4 = document.createElement('td');
+    const Td2 = document.createElement('td');
+    const Td3 = document.createElement('td');
+    const Td4 = document.createElement('td');
 
-    img.src =
-      'https://media.istockphoto.com/id/1222357475/it/vettoriale/icona-di-anteprima-dellimmagine-segnaposto-immagine-per-la-progettazione-di-siti-web-o.jpg?s=612x612&w=0&k=20&c=Fq_GEHrjqNWyG1N_JQbA1WtVGeeE5UCvgpwNv_u_MPk=';
+    img.src = shoppingCart[i].image;
     img.alt = 'Product image';
     img.style.width = '50%';
-    bodyTd1.style.width = '20%';
-    bodyTd2.innerText = 'nome del prodotto';
-    bodyTd3.innerText = 'quantità del prodotto';
-    bodyTd4.innerText = 'prezzo del prodotto';
+    Td1.style.width = '10%';
+    Td2.innerText = shoppingCart[i].name;
+    Td3.innerText = shoppingCart[i].quantity;
+    Td4.innerText = shoppingCart[i].price;
 
-    bodyTr.appendChild(bodyTd1);
-    bodyTd1.appendChild(img);
-    bodyTr.appendChild(bodyTd2);
-    bodyTr.appendChild(bodyTd3);
-    bodyTr.appendChild(bodyTd4);
+    bodyTr.appendChild(Td1);
+    Td1.appendChild(img);
+    bodyTr.appendChild(Td2);
+    bodyTr.appendChild(Td3);
+    bodyTr.appendChild(Td4);
     tBody.appendChild(bodyTr);
   }
   newTable.appendChild(tBody);
@@ -174,16 +205,97 @@ generateTable();
         Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
      */
 
-const addRow = function () {};
+const newobject = [
+  {
+    image: 'https://m.media-amazon.com/images/I/71B52QCcqEL._AC_SX522_.jpg',
+    name: 'Lexar NM790 SSD Interno 1TB',
+    quantity: 2,
+    price: 97.99,
+  },
+];
 
+const addRow = function () {
+  const bodyTr = document.createElement('tr');
+  const Td1 = document.createElement('td');
+  const img = document.createElement('img');
+  const Td2 = document.createElement('td');
+  const Td3 = document.createElement('td');
+  const Td4 = document.createElement('td');
+
+  img.src = newobject[0].image;
+  img.alt = 'Product image';
+  img.style.width = '50%';
+  img.style.height = '10%';
+  Td1.style.width = '10%';
+  Td2.innerText = newobject[0].name;
+  Td3.innerText = newobject[0].quantity;
+  Td4.innerText = newobject[0].price;
+
+  bodyTr.appendChild(Td1);
+  Td1.appendChild(img);
+  bodyTr.appendChild(Td2);
+  bodyTr.appendChild(Td3);
+  bodyTr.appendChild(Td4);
+  tBody.appendChild(bodyTr);
+  newTable.appendChild(tBody);
+};
+
+addRow();
 /* ESERCIZIO 14
        Crea una funzione che nasconda le immagini della tabella quando eseguita
      */
 
-const hideAllImages = function () {};
+const hideAllImages = function () {
+  const hideImg = document.querySelectorAll('img');
+
+  hideImg.forEach((element) => {
+    element.style.display = 'none';
+  });
+};
+
+// hideAllImages();
 
 /* EXTRA ESERCIZIO 15
        Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
      */
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+console.log(getRandomColor());
 
-const changeColorWithRandom = function () {};
+const changeColorWithRandom = function () {
+  const randomH2Color = document.getElementById('changeMyColor');
+
+  randomH2Color.addEventListener('click', function () {
+    const randomColor = getRandomColor();
+    randomH2Color.style.color = randomColor;
+  });
+};
+changeColorWithRandom();
+/* EXTRA ESERCIZIO 16
+      Crea una funzione che elimini le vocali da ogni elemento testuale della pagina (puoi aiutarti con i nuovi metodi degli array di ES6)
+    */
+
+const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'u'];
+
+const deleteVowels = function () {
+  const allElements = document.querySelectorAll('h1,h2,h3,p,li,th,td,a');
+
+  allElements.forEach((element) => {
+    if (element.tagName === 'TD' && element.querySelector('img')) {
+      // Se sì, non modificare il testo in questo elemento
+      return;
+    }
+    const toArray = Array.from(element.textContent);
+    const filtered = toArray
+      .filter((charElement) => !vowels.includes(charElement))
+      .join('');
+    element.textContent = filtered;
+  });
+};
+deleteVowels();
